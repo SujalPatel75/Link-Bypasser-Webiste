@@ -38,20 +38,28 @@
             <div class="mt-4">
               <!-- This div will display the results -->
               {% if result %}
-                <p>{{ result }}</p>
+                <div class="mb-2">
+                  <a href="{{ result }}" class="d-block" target="_blank">{{ result }}</a>
+                </div>
               {% endif %}
-
+            
               {% if prev_links %}
                 <div class="mt-4">
                   <strong>Previously Shortened Links:</strong>
-                  {% for prev_link in prev_links[::-1] %}
+                  <ul>
+                    {% for prev_link in prev_links[::-1] %}
                     {% if prev_link.strip() %}
+                    <li>
                       <a href="{{ prev_link }}" class="d-block mb-2" target="_blank">{{ prev_link }}</a>
+                    </li>
                     {% endif %}
-                  {% endfor %}
+                    {% endfor %}
+                  </ul>
                 </div>
               {% endif %}
             </div>
+            
+            
             <p class="mt-3 text-warning">If any of the links are not bypassing, <a href="https://t.me/reportlinkbypassbot">click here to report</a>.</p>
             <div class="mt-5">
               <p>Designed and made by <a href="https://patelsujal.in">Sujal Patel</a></p>
