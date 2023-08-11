@@ -60,24 +60,24 @@ def index():
         url = request.form.get("url")
         result = loop_thread(url)
         
-        # Get previously shortened links from the cookie
+     
         shortened_links = request.cookies.get('shortened_links')
         if shortened_links:
             prev_links = shortened_links.split(',')
         else:
             prev_links = []
 
-        # Add the newly shortened link to the list of previously shortened links
+       
         if result:
             prev_links.append(result)
-            # Limit the list to a certain number of links if desired
-            if len(prev_links) > 10:  # Adjust the number as needed
-                prev_links = prev_links[-10:]  # Keep the last 10 links
+           
+            if len(prev_links) > 10: 
+                prev_links = prev_links[-10:]  
 
-        # Join the list of links back into a comma-separated string
+       
         shortened_links_str = ','.join(prev_links)
 
-        # Set the updated shortened links in the cookie
+        
         resp = make_response(render_template("index.html", result=result, prev_links=prev_links))
         resp.set_cookie('shortened_links', shortened_links_str)
 
