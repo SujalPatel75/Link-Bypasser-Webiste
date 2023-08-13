@@ -998,7 +998,7 @@ def shortingly(url):
 # Gyanilinks - gtlinks.me
 
 def gyanilinks(url):
-    DOMAIN = "https://go.theforyou.in/"
+    DOMAIN = "https://go.hipsonyc.com/"
     client = cloudscraper.create_scraper(allow_brotli=False)
     url = url[:-1] if url[-1] == '/' else url
     code = url.split("/")[-1]
@@ -1606,7 +1606,7 @@ def xpshort(url):
     url = url[:-1] if url[-1] == '/' else url
     code = url.split("/")[-1]
     final_url = f"{DOMAIN}/{code}"
-    ref = "https://m.awmnews.in/"
+    ref = "https://www.helpinsights.in/"
     h = {"referer": ref}
     resp = client.get(final_url,headers=h)
     soup = BeautifulSoup(resp.content, "html.parser")
@@ -1703,21 +1703,24 @@ def dulink(url):
 # krownlinks
 
 def krownlinks(url):
-    client = requests.session()
-    DOMAIN = "https://tech.bloggertheme.xyz"
-    url = url[:-1] if url[-1] == '/' else url
+    client = cloudscraper.create_scraper(allow_brotli=False)
+    DOMAIN = "https://go.hostadviser.net/"
+    url = url[:-1] if url[-1] == "/" else url
     code = url.split("/")[-1]
     final_url = f"{DOMAIN}/{code}"
-    resp = client.get(final_url)
+    ref = "blog.hostadviser.net/"
+    h = {"referer": ref}
+    resp = client.get(final_url, headers=h)
     soup = BeautifulSoup(resp.content, "html.parser")
-    try: inputs = soup.find(id="go-link").find_all(name="input")
-    except: return "Incorrect Link"
-    data = { input.get('name'): input.get('value') for input in inputs }
-    h = { "x-requested-with": "XMLHttpRequest" }
-    time.sleep(10)
+    inputs = soup.find_all("input")
+    data = {input.get("name"): input.get("value") for input in inputs}
+    h = {"x-requested-with": "XMLHttpRequest"}
+    time.sleep(8)
     r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
-    try: return r.json()['url']
-    except: return "Something went wrong :("
+    try:
+        return str(r.json()["url"])
+    except BaseException:
+        return "Something went wrong :("
 
 
 ####################################################################################################
