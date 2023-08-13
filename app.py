@@ -2,18 +2,11 @@ from flask import Flask, request, render_template, make_response
 import bypasser
 import re
 import os
-import pyrogram
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from os import environ, remove
-from threading import Thread
-from json import load
-from texts import gdrivetext, otherstext, ddltext, shortnertext, HELP_TEXT
-from texts import HELP_TEXT
 from ddl import ddllist, direct_link_generator
-from time import time
+
 
 app = Flask(__name__)
+
 
 def handle_index(ele):
     result = bypasser.scrapeIndex(ele)
@@ -52,6 +45,7 @@ def loop_thread(url):
 
     return link
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -83,6 +77,8 @@ def index():
 
     shortened_links = request.cookies.get('shortened_links')
     return render_template("index.html", result=None, prev_links=shortened_links.split(",") if shortened_links else None)
+
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
