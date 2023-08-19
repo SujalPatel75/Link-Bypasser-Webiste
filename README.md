@@ -1,16 +1,13 @@
+# Project discontinued 
 
+I have decided to discontinue my open-source project on GitHub, primarily because I achieved my goal of contributing to another repository. The project served its purpose, and as a result, I have chosen to conclude its development.
 
-# A webiste that bypass various link shortner
+## Check here
 
-This website helps bypass link and generate the final destination result in seconds
-This helps to save time and stay away from harmful hidden viruses
+https://github.com/bipinkrish/Link-Bypasser-Bot
 
+## What's the Function of This Project
 
-## Check this out on
+This project or website functions to bypass links and swiftly generate the ultimate destination output within seconds. This efficient process not only preserves valuable time but also acts as a safeguard against concealed and malicious viruses, ensuring a secure online experience.
 
-https://link-bypasser-webiste.onrender.com/
-
-
-## Notice
-Use this project to deploy link-bypasser service on web only. If you wan to have your telegram bot and web services deployed at one place use this repository  - (https://github.com/bipinkrish/Link-Bypasser-Bot)
 
